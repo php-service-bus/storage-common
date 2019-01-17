@@ -15,7 +15,7 @@ namespace Desperado\ServiceBus\Storage\Exceptions;
 /**
  *
  */
-final class StorageInteractingFailed extends \RuntimeException
+final class StorageInteractingFailed extends \RuntimeException implements StorageExceptionMarker
 {
 
 }

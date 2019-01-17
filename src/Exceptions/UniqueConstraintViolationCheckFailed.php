@@ -15,7 +15,7 @@ namespace Desperado\ServiceBus\Storage\Exceptions;
 /**
  *
  */
-final class UniqueConstraintViolationCheckFailed extends \InvalidArgumentException
+final class UniqueConstraintViolationCheckFailed extends \InvalidArgumentException implements StorageExceptionMarker
 {
 
 }

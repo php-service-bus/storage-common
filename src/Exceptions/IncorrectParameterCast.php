@@ -15,7 +15,7 @@ namespace Desperado\ServiceBus\Storage\Exceptions;
 /**
  *
  */
-final class IncorrectParameterCast extends \LogicException
+final class IncorrectParameterCast extends \LogicException implements StorageExceptionMarker
 {
 
 }

@@ -15,7 +15,7 @@ namespace Desperado\ServiceBus\Storage\Exceptions;
 /**
  *
  */
-final class InvalidConfigurationOptions extends \InvalidArgumentException
+final class InvalidConfigurationOptions extends \InvalidArgumentException implements StorageExceptionMarker
 {
 
 }

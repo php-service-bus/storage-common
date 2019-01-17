@@ -15,7 +15,7 @@ namespace Desperado\ServiceBus\Storage\Exceptions;
 /**
  *
  */
-final class OneResultExpected extends \LogicException implements StorageExceptionMarker
+interface StorageExceptionMarker
 {
 
 }

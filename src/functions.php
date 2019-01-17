@@ -196,6 +196,8 @@ function deleteQuery(string $fromTable): DeleteQuery
  * @param array<string, mixed>|object $toInsert
  *
  * @return InsertQuery
+ *
+ * @throws \Desperado\ServiceBus\Storage\Exceptions\IncorrectParameterCast
  */
 function insertQuery(string $toTable, $toInsert): InsertQuery
 {
