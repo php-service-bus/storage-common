@@ -39,3 +39,7 @@ Query builder helpers list:
 * [updateQuery()](https://github.com/mmasiukevich/storage/blob/master/src/functions.php#L175)
 * [deleteQuery()](https://github.com/mmasiukevich/storage/blob/master/src/functions.php#L187)
 * [insertQuery()](https://github.com/mmasiukevich/storage/blob/master/src/functions.php#L200)
+
+#### Examples
+
+@see [examples](https://github.com/mmasiukevich/storage/tree/master/examples) directory
