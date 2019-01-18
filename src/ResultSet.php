@@ -1,16 +1,16 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) storage component
+ * PHP Service Bus (publish-subscribe pattern implementation) storage common parts
  *
- * @author  Maksim Masiukevich <desperado@minsk-info.ru>
+ * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
 
 declare(strict_types = 1);
 
-namespace Desperado\ServiceBus\Storage;
+namespace ServiceBus\Storage\Common;
 
 use Amp\Promise;
 
@@ -25,7 +25,7 @@ interface ResultSet
      *
      * @return Promise<bool>
      *
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\ResultSetIterationFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      */
     public function advance(): Promise;
 
@@ -34,7 +34,7 @@ interface ResultSet
      *
      * @return array<string, string|int|null|float|resource>|null Value emitted from the iterator
      *
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\ResultSetIterationFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      */
     public function getCurrent(): ?array;
 
@@ -45,7 +45,7 @@ interface ResultSet
      *
      * @return string|int|null
      *
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\ResultSetIterationFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      */
     public function lastInsertId(?string $sequence = null);
 
@@ -54,7 +54,7 @@ interface ResultSet
      *
      * @return int
      *
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\ResultSetIterationFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      */
     public function affectedRows(): int;
 }

@@ -1,42 +1,32 @@
 {
-  "name": "mmasiukevich/storage",
-  "description": "PHP Service Bus (publish-subscribe pattern) storage component",
+  "name": "php-service-bus/storage-common",
+  "description": "PHP Service Bus (publish-subscribe pattern) storage common parts",
   "type": "library",
-  "keywords": [],
+  "keywords": ["cqrs", "event-sourcing", "async-php", "command-bus", "messaging"],
   "authors": [
     {
       "name": "Masiukevich Maksim",
-      "email": "desperado@minsk-info.ru",
+      "email": "dev@async-php.com",
       "homepage": "https://github.com/mmasiukevich",
-      "role": "Developer"
+      "role": "Maintainer"
     }
   ],
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Desperado\\ServiceBus\\Storage\\": "src/"
-    },
-    "files": [
-      "src/functions.php"
-    ]
+      "ServiceBus\\Storage\\Common\\": "src/"
+    }
   },
   "autoload-dev": {
     "psr-4": {
-      "Desperado\\ServiceBus\\Storage\\Tests\\": "tests/"
-    },
-    "files": [
-      "src/functions.php"
-    ]
+      "ServiceBus\\Storage\\Common\\Tests\\": "tests/"
+    }
   },
   "require": {
     "php": ">=7.2",
-    "ext-pgsql": "*",
-    "amphp/postgres": "^1",
-    "latitude/latitude": "^3.1",
-    "psr/log": "1.1.*"
+    "amphp/amp": "^2"
   },
   "require-dev": {
-    "doctrine/dbal": "^v2.6",
     "phpunit/phpunit": "^7",
     "vimeo/psalm": "^3"
   },

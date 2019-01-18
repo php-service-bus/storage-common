@@ -1,16 +1,16 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) storage component
+ * PHP Service Bus (publish-subscribe pattern implementation) storage common parts
  *
- * @author  Maksim Masiukevich <desperado@minsk-info.ru>
+ * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
 
 declare(strict_types = 1);
 
-namespace Desperado\ServiceBus\Storage;
+namespace ServiceBus\Storage\Common;
 
 use Amp\Promise;
 
@@ -25,12 +25,12 @@ interface QueryExecutor
      * @param string $queryString
      * @param array  $parameters
      *
-     * @return Promise<\Desperado\ServiceBus\Storage\ResultSet>
+     * @return Promise<\ServiceBus\Storage\Common\ResultSet>
      *
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\InvalidConfigurationOptions
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\ConnectionFailed
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\UniqueConstraintViolationCheckFailed
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\StorageInteractingFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
+     * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
      */
     public function execute(string $queryString, array $parameters = []): Promise;
 }

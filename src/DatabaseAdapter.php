@@ -1,16 +1,16 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) storage component
+ * PHP Service Bus (publish-subscribe pattern implementation) storage common parts
  *
- * @author  Maksim Masiukevich <desperado@minsk-info.ru>
+ * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
 
 declare(strict_types = 1);
 
-namespace Desperado\ServiceBus\Storage;
+namespace ServiceBus\Storage\Common;
 
 use Amp\Promise;
 
@@ -22,12 +22,12 @@ interface DatabaseAdapter extends QueryExecutor, BinaryDataDecoder
     /**
      * Start transaction
      *
-     * @return Promise<\Desperado\ServiceBus\Storage\Transaction>
+     * @return Promise<\ServiceBus\Storage\Common\Transaction>
      *
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\InvalidConfigurationOptions
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\ConnectionFailed
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\UniqueConstraintViolationCheckFailed
-     * @throws \Desperado\ServiceBus\Storage\Exceptions\StorageInteractingFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
+     * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
      */
     public function transaction(): Promise;
 }
