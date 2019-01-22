@@ -84,10 +84,8 @@ final class StorageConfiguration
      * @param string $connectionDSN DSN examples:
      *                              - inMemory: sqlite:///:memory:
      *                              - AsyncPostgreSQL: pgsql://user:password@host:port/database
-     *
-     * @return self
      */
-    public static function fromDSN(string $connectionDSN): self
+    public function __construct(string $connectionDSN)
     {
         $preparedDSN = \preg_replace('#^((?:pdo_)?sqlite3?):///#', '$1://localhost/', $connectionDSN);
 
@@ -101,25 +99,22 @@ final class StorageConfiguration
          * } $parsedDSN
          */
         $parsedDSN   = \parse_url($preparedDSN);
-        $self        = new self();
 
         $queryString = (string) ($parsedDSN['query'] ?? 'charset=UTF-8');
 
-        \parse_str($queryString, $self->queryParameters);
+        \parse_str($queryString, $this->queryParameters);
 
         /** @var array{charset:string|null, max_connections:int|null, idle_timeout:int|null} $queryParameters */
-        $queryParameters = $self->queryParameters;
+        $queryParameters = $this->queryParameters;
 
-        $self->originalDSN  = $connectionDSN;
-        $self->scheme       = $parsedDSN['scheme'] ?? null;
-        $self->host         = $parsedDSN['host'] ?? null;
-        $self->port         = $parsedDSN['port'] ?? null;
-        $self->username     = $parsedDSN['user'] ?? null;
-        $self->password     = $parsedDSN['pass'] ?? null;
-        $self->databaseName = $parsedDSN['path'] ? \ltrim((string) $parsedDSN['path'], '/') : null;
-        $self->encoding     = $queryParameters['charset'] ?? 'UTF-8';
-
-        return $self;
+        $this->originalDSN  = $connectionDSN;
+        $this->scheme       = $parsedDSN['scheme'] ?? null;
+        $this->host         = $parsedDSN['host'] ?? null;
+        $this->port         = $parsedDSN['port'] ?? null;
+        $this->username     = $parsedDSN['user'] ?? null;
+        $this->password     = $parsedDSN['pass'] ?? null;
+        $this->databaseName = $parsedDSN['path'] ? \ltrim((string) $parsedDSN['path'], '/') : null;
+        $this->encoding     = $queryParameters['charset'] ?? 'UTF-8';
     }
 
     /**
@@ -130,13 +125,5 @@ final class StorageConfiguration
     public function hasCredentials(): bool
     {
         return '' !== (string) $this->username || '' !== (string) $this->password;
-    }
-
-    /**
-     * Close constructor
-     */
-    private function __construct()
-    {
-
     }
 }

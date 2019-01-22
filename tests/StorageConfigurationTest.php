@@ -29,7 +29,7 @@ final class StorageConfigurationTest extends TestCase
      */
     public function parseSqlite(): void
     {
-        $configuration = StorageConfiguration::fromDSN('sqlite:///:memory:');
+        $configuration = new StorageConfiguration('sqlite:///:memory:');
 
         static::assertEquals('sqlite:///:memory:', $configuration->originalDSN);
         static::assertEquals('sqlite', $configuration->scheme);
@@ -48,7 +48,7 @@ final class StorageConfigurationTest extends TestCase
      */
     public function parseFullDSN(): void
     {
-        $configuration = StorageConfiguration::fromDSN(
+        $configuration = new StorageConfiguration(
             'pgsql://someUser:someUserPassword@host:54332/databaseName?charset=UTF-16'
         );
         static::assertEquals('pgsql', $configuration->scheme);
