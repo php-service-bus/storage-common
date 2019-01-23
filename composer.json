@@ -23,12 +23,12 @@
     }
   },
   "require": {
-    "php": ">=7.2",
-    "amphp/amp": "^2"
+    "php": ">=7.2"
   },
   "require-dev": {
     "phpunit/phpunit": "^7",
-    "vimeo/psalm": "^3"
+    "vimeo/psalm": "^3",
+    "amphp/amp": "^2"
   },
   "prefer-stable": true,
   "minimum-stability": "dev",
