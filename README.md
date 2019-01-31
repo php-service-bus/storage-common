@@ -4,4 +4,4 @@
 
 ## What is it?
 
-A set of interfaces for the implementation of work with databases
+A set of interfaces for the implementation database adapters
