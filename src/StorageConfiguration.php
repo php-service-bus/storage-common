@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) storage common parts
+ * Common storage parts
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -11,6 +11,8 @@
 declare(strict_types = 1);
 
 namespace ServiceBus\Storage\Common;
+
+use ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions;
 
 /**
  * Adapter configuration for storage
@@ -84,12 +86,25 @@ final class StorageConfiguration
      * @param string $connectionDSN DSN examples:
      *                              - inMemory: sqlite:///:memory:
      *                              - AsyncPostgreSQL: pgsql://user:password@host:port/database
+     *
+     * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
      */
     public function __construct(string $connectionDSN)
     {
         $preparedDSN = \preg_replace('#^((?:pdo_)?sqlite3?):///#', '$1://localhost/', $connectionDSN);
 
-        /** @var array{
+        /** @var array|null|false $parsedDSN */
+        $parsedDSN = \parse_url((string) $preparedDSN);
+
+        // @codeCoverageIgnoreStart
+        if(null !== $parsedDSN && false === \is_array($parsedDSN))
+        {
+            throw new InvalidConfigurationOptions('Error while parsing connection DSN');
+        }
+        // @codeCoverageIgnoreEnd
+
+        /**
+         * @var array{
          *    scheme:string|null,
          *    host:string|null,
          *    port:int|null,
@@ -98,7 +113,6 @@ final class StorageConfiguration
          *    path:string|null
          * } $parsedDSN
          */
-        $parsedDSN   = \parse_url($preparedDSN);
 
         $queryString = (string) ($parsedDSN['query'] ?? 'charset=UTF-8');
 

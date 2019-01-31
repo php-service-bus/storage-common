@@ -14,9 +14,11 @@
     </php>
 
     <testsuites>
-        <testsuite name="Service Bus storage component">
+
+        <testsuite name="Common storage parts">
             <directory>./tests/</directory>
         </testsuite>
+
     </testsuites>
 
     <filter>

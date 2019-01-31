@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) storage common parts
+ * Common storage parts
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT

@@ -1,8 +1,12 @@
 {
   "name": "php-service-bus/storage-common",
-  "description": "PHP Service Bus (publish-subscribe pattern) storage common parts",
+  "description": "Common storage parts",
   "type": "library",
-  "keywords": ["cqrs", "event-sourcing", "async-php", "command-bus", "messaging"],
+  "keywords": [
+    "async-php",
+    "command-bus",
+    "messaging"
+  ],
   "authors": [
     {
       "name": "Masiukevich Maksim",
@@ -27,7 +31,7 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^7",
-    "vimeo/psalm": "^3",
+    "vimeo/psalm": "dev-master",
     "amphp/amp": "^2"
   },
   "prefer-stable": true,
