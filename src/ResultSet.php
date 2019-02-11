@@ -43,11 +43,11 @@ interface ResultSet
      *
      * @param string $sequence
      *
-     * @return string|int|null
+     * @return Promise<string|int|null>
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      */
-    public function lastInsertId(?string $sequence = null);
+    public function lastInsertId(?string $sequence = null): Promise;
 
     /**
      * Returns the number of rows affected by the last DELETE, INSERT, or UPDATE statement executed
