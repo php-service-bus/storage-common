@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common storage parts
+ * Common storage parts.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -15,19 +15,19 @@ namespace ServiceBus\Storage\Common;
 use Amp\Promise;
 
 /**
- * Interface adapter for working with the database
+ * Interface adapter for working with the database.
  */
 interface DatabaseAdapter extends QueryExecutor, BinaryDataDecoder
 {
     /**
-     * Start transaction
-     *
-     * @return Promise<\ServiceBus\Storage\Common\Transaction>
+     * Start transaction.
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
+     *
+     * @return Promise<\ServiceBus\Storage\Common\Transaction>
      */
     public function transaction(): Promise;
 }

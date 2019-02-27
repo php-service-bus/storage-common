@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common storage parts
+ * Common storage parts.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -15,68 +15,68 @@ namespace ServiceBus\Storage\Common;
 use ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions;
 
 /**
- * Adapter configuration for storage
+ * Adapter configuration for storage.
  */
 final class StorageConfiguration
 {
     /**
-     * Original DSN
+     * Original DSN.
      *
      * @var string
      */
     public $originalDSN;
 
     /**
-     * Scheme
+     * Scheme.
      *
      * @var string|null
      */
     public $scheme;
 
     /**
-     * Database host
+     * Database host.
      *
      * @var string|null
      */
     public $host;
 
     /**
-     * Database port
+     * Database port.
      *
      * @var int|null
      */
     public $port;
 
     /**
-     * Database user
+     * Database user.
      *
      * @var string|null
      */
     public $username;
 
     /**
-     * Database user password
+     * Database user password.
      *
      * @var string|null
      */
     public $password;
 
     /**
-     * Database name
+     * Database name.
      *
      * @var string|null
      */
     public $databaseName;
 
     /**
-     * Connection encoding
+     * Connection encoding.
      *
      * @var string
      */
     public $encoding;
 
     /**
-     * All query parameters
+     * All query parameters.
      *
      * @var array
      */
@@ -93,11 +93,11 @@ final class StorageConfiguration
     {
         $preparedDSN = \preg_replace('#^((?:pdo_)?sqlite3?):///#', '$1://localhost/', $connectionDSN);
 
-        /** @var array|null|false $parsedDSN */
+        /** @var array|false|null $parsedDSN */
         $parsedDSN = \parse_url((string) $preparedDSN);
 
         // @codeCoverageIgnoreStart
-        if(null !== $parsedDSN && false === \is_array($parsedDSN))
+        if (null !== $parsedDSN && false === \is_array($parsedDSN))
         {
             throw new InvalidConfigurationOptions('Error while parsing connection DSN');
         }
@@ -113,7 +113,6 @@ final class StorageConfiguration
          *    path:string|null
          * } $parsedDSN
          */
-
         $queryString = (string) ($parsedDSN['query'] ?? 'charset=UTF-8');
 
         \parse_str($queryString, $this->queryParameters);
@@ -132,7 +131,7 @@ final class StorageConfiguration
     }
 
     /**
-     * Has specified credentials
+     * Has specified credentials.
      *
      * @return bool
      */

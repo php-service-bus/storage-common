@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common storage parts
+ * Common storage parts.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -13,14 +13,14 @@ declare(strict_types = 1);
 namespace ServiceBus\Storage\Common;
 
 /**
- * Unescape binary data
+ * Unescape binary data.
  */
 interface BinaryDataDecoder
 {
     /**
-     * Unescape binary string
+     * Unescape binary string.
      *
-     * @param string|resource $payload
+     * @param resource|string $payload
      *
      * @return string
      */

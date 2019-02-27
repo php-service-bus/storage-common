@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common storage parts
+ * Common storage parts.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -23,41 +23,41 @@ final class StorageConfigurationTest extends TestCase
     /**
      * @test
      *
-     * @return void
-     *
      * @throws \Throwable
+     *
+     * @return void
      */
     public function parseSqlite(): void
     {
         $configuration = new StorageConfiguration('sqlite:///:memory:');
 
-        static::assertEquals('sqlite:///:memory:', $configuration->originalDSN);
-        static::assertEquals('sqlite', $configuration->scheme);
-        static::assertEquals('localhost', $configuration->host);
-        static::assertEquals(':memory:', $configuration->databaseName);
-        static::assertEquals('UTF-8', $configuration->encoding);
+        static::assertSame('sqlite:///:memory:', $configuration->originalDSN);
+        static::assertSame('sqlite', $configuration->scheme);
+        static::assertSame('localhost', $configuration->host);
+        static::assertSame(':memory:', $configuration->databaseName);
+        static::assertSame('UTF-8', $configuration->encoding);
         static::assertFalse($configuration->hasCredentials());
     }
 
     /**
      * @test
      *
-     * @return void
-     *
      * @throws \Throwable
+     *
+     * @return void
      */
     public function parseFullDSN(): void
     {
         $configuration = new StorageConfiguration(
             'pgsql://someUser:someUserPassword@host:54332/databaseName?charset=UTF-16'
         );
-        static::assertEquals('pgsql', $configuration->scheme);
-        static::assertEquals('host', $configuration->host);
-        static::assertEquals(54332, $configuration->port);
-        static::assertEquals('databaseName', $configuration->databaseName);
-        static::assertEquals('UTF-16', $configuration->encoding);
+        static::assertSame('pgsql', $configuration->scheme);
+        static::assertSame('host', $configuration->host);
+        static::assertSame(54332, $configuration->port);
+        static::assertSame('databaseName', $configuration->databaseName);
+        static::assertSame('UTF-16', $configuration->encoding);
         static::assertTrue($configuration->hasCredentials());
-        static::assertEquals('someUser', $configuration->username);
-        static::assertEquals('someUserPassword', $configuration->password);
+        static::assertSame('someUser', $configuration->username);
+        static::assertSame('someUserPassword', $configuration->password);
     }
 }

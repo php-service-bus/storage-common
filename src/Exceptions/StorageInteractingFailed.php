@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common storage parts
+ * Common storage parts.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -17,5 +17,4 @@ namespace ServiceBus\Storage\Common\Exceptions;
  */
 final class StorageInteractingFailed extends \RuntimeException implements StorageExceptionMarker
 {
-
 }

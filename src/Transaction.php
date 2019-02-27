@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common storage parts
+ * Common storage parts.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -15,28 +15,28 @@ namespace ServiceBus\Storage\Common;
 use Amp\Promise;
 
 /**
- * Transaction handler
+ * Transaction handler.
  */
 interface Transaction extends QueryExecutor, BinaryDataDecoder
 {
     /**
-     * Commit transaction
-     *
-     * @return Promise It does not return any result
+     * Commit transaction.
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
+     *
+     * @return Promise It does not return any result
      */
     public function commit(): Promise;
 
     /**
-     * Rollback transaction
-     *
-     * @return Promise It does not return any result
+     * Rollback transaction.
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
+     *
+     * @return Promise It does not return any result
      */
     public function rollback(): Promise;
 }
