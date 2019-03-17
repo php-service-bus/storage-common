@@ -16,6 +16,16 @@ use ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions;
 
 /**
  * Adapter configuration for storage.
+ *
+ * @property-read string      $originalDSN
+ * @property-read string|null $scheme
+ * @property-read string|null $host
+ * @property-read int|null    $port
+ * @property-read string|null $username
+ * @property-read string|null $password
+ * @property-read string|null $databaseName
+ * @property-read string|null $encoding
+ * @property-read array       $queryParameters
  */
 final class StorageConfiguration
 {
