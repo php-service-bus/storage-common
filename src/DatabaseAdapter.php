@@ -24,10 +24,25 @@ interface DatabaseAdapter extends QueryExecutor, BinaryDataDecoder
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
-     * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
      *
      * @return Promise<\ServiceBus\Storage\Common\Transaction>
      */
     public function transaction(): Promise;
+
+    /**
+     * Executes a function in a transaction.
+     *
+     * @psalm-param callable(\ServiceBus\Storage\Common\QueryExecutor):\Generator $function
+     *
+     * @param callable $function
+     *
+     * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
+     * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
+     * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
+     *
+     * @return Promise
+     */
+    public function transactional(callable $function): Promise;
 }
