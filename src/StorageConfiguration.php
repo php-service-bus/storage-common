@@ -103,27 +103,33 @@ final class StorageConfiguration
     {
         $preparedDSN = \preg_replace('#^((?:pdo_)?sqlite3?):///#', '$1://localhost/', $connectionDSN);
 
-        /** @var array|false|null $parsedDSN */
-        $parsedDSN = \parse_url((string) $preparedDSN);
-
-        // @codeCoverageIgnoreStart
-        if (null !== $parsedDSN && false === \is_array($parsedDSN))
-        {
-            throw new InvalidConfigurationOptions('Error while parsing connection DSN');
-        }
-        // @codeCoverageIgnoreEnd
-
         /**
-         * @var array{
+         * @psalm-var array{
          *    scheme:string|null,
          *    host:string|null,
          *    port:int|null,
          *    user:string|null,
          *    pass:string|null,
          *    path:string|null
-         * } $parsedDSN
+         * }|null|false $parsedDSN
+         *
+         * @var array|false|null $parsedDSN
          */
-        $queryString = (string) ($parsedDSN['query'] ?? 'charset=UTF-8');
+        $parsedDSN = \parse_url((string) $preparedDSN);
+
+        // @codeCoverageIgnoreStart
+        if (false === \is_array($parsedDSN))
+        {
+            throw new InvalidConfigurationOptions('Error while parsing connection DSN');
+        }
+        // @codeCoverageIgnoreEnd
+
+        $queryString = 'charset=UTF-8';
+
+        if (true === isset($parsedDSN['query']) && '' !== $parsedDSN['query'])
+        {
+            $queryString = (string) $parsedDSN['query'];
+        }
 
         \parse_str($queryString, $this->queryParameters);
 

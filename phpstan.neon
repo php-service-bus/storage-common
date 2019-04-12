@@ -1,0 +1,13 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#PHPDoc tag @return contains unresolvable type#'
+			path: %currentWorkingDirectory%/src/DatabaseAdapter.php
+
+		-
+			message: '#PHPDoc tag @return contains unresolvable type#'
+			path: %currentWorkingDirectory%/src/QueryExecutor.php
+
+		-
+			message: '#PHPDoc tag @return contains unresolvable type#'
+			path: %currentWorkingDirectory%/src/ResultSet.php
