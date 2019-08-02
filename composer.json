@@ -30,11 +30,11 @@
     "php": ">=7.3"
   },
   "require-dev": {
-    "php-service-bus/code-style-config": "^v0.1",
-    "phpunit/phpunit": "^8",
-    "vimeo/psalm": "^3",
-    "amphp/amp": "^2",
-    "phpstan/phpstan": "^0.11"
+    "php-service-bus/code-style-config": "v0.1.*",
+    "phpunit/phpunit": "8.3.*",
+    "vimeo/psalm": "3.4.*",
+    "amphp/amp": "2.1.*",
+    "phpstan/phpstan": "0.11.*"
   },
   "prefer-stable": true,
   "minimum-stability": "stable",
