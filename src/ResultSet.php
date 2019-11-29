@@ -31,7 +31,7 @@ interface ResultSet
 
     /**
      * Gets the last emitted value or throws an exception if the iterator has completed.
-     * Returns value emitted from the iterator
+     * Returns value emitted from the iterator.
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      *

@@ -64,7 +64,9 @@ final class StorageConfiguration
     /**
      * All query parameters.
      */
-    public array $queryParameters = [];
+    public array
+
+ $queryParameters = [];
 
     /**
      * @param string $connectionDSN DSN examples:
