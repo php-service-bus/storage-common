@@ -24,8 +24,6 @@ final class StorageConfigurationTest extends TestCase
      * @test
      *
      * @throws \Throwable
-     *
-     * @return void
      */
     public function parseSqlite(): void
     {
@@ -43,8 +41,6 @@ final class StorageConfigurationTest extends TestCase
      * @test
      *
      * @throws \Throwable
-     *
-     * @return void
      */
     public function parseFullDSN(): void
     {

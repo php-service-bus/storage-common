@@ -31,17 +31,16 @@ interface ResultSet
 
     /**
      * Gets the last emitted value or throws an exception if the iterator has completed.
+     * Returns value emitted from the iterator
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      *
-     * @return array<string, float|int|resource|string|null>|null Value emitted from the iterator
+     * @psalm-return array<string, float|int|resource|string|null>|null
      */
     public function getCurrent(): ?array;
 
     /**
      * Receive last insert id.
-     *
-     * @param string $sequence
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      *
@@ -53,8 +52,6 @@ interface ResultSet
      * Returns the number of rows affected by the last DELETE, INSERT, or UPDATE statement executed.
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
-     *
-     * @return int
      */
     public function affectedRows(): int;
 }

@@ -17,80 +17,54 @@ use ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions;
 /**
  * Adapter configuration for storage.
  *
- * @property-read string      $originalDSN
- * @property-read string|null $scheme
- * @property-read string|null $host
- * @property-read int|null    $port
- * @property-read string|null $username
- * @property-read string|null $password
- * @property-read string|null $databaseName
- * @property-read string|null $encoding
- * @property-read array       $queryParameters
+ * @psalm-readonly
  */
 final class StorageConfiguration
 {
     /**
      * Original DSN.
-     *
-     * @var string
      */
-    public $originalDSN;
+    public string $originalDSN;
 
     /**
      * Scheme.
-     *
-     * @var string|null
      */
-    public $scheme;
+    public ?string $scheme;
 
     /**
      * Database host.
-     *
-     * @var string|null
      */
-    public $host;
+    public ?string $host;
 
     /**
      * Database port.
-     *
-     * @var int|null
      */
-    public $port;
+    public ?int $port;
 
     /**
      * Database user.
-     *
-     * @var string|null
      */
-    public $username;
+    public ?string $username;
 
     /**
      * Database user password.
-     *
-     * @var string|null
      */
-    public $password;
+    public ?string $password;
 
     /**
      * Database name.
-     *
-     * @var string|null
      */
-    public $databaseName;
+    public ?string $databaseName;
 
     /**
      * Connection encoding.
-     *
-     * @var string
      */
-    public $encoding;
+    public string $encoding;
 
     /**
      * All query parameters.
-     *
-     * @var array
      */
-    public $queryParameters = [];
+    public array $queryParameters = [];
 
     /**
      * @param string $connectionDSN DSN examples:
@@ -148,8 +122,6 @@ final class StorageConfiguration
 
     /**
      * Has specified credentials.
-     *
-     * @return bool
      */
     public function hasCredentials(): bool
     {

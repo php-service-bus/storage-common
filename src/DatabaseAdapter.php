@@ -35,8 +35,6 @@ interface DatabaseAdapter extends QueryExecutor, BinaryDataDecoder
      *
      * @psalm-param callable(\ServiceBus\Storage\Common\QueryExecutor):\Generator $function
      *
-     * @param callable $function
-     *
      * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed

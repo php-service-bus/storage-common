@@ -24,9 +24,6 @@ interface QueryExecutor
      *
      * @psalm-param array<string, string|int|float|null> $parameters
      *
-     * @param string $queryString
-     * @param array  $parameters
-     *
      * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed

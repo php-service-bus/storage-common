@@ -21,8 +21,6 @@ interface BinaryDataDecoder
      * Unescape binary string.
      *
      * @param resource|string $payload
-     *
-     * @return string
      */
     public function unescapeBinary($payload): string;
 }
