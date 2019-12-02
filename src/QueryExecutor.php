@@ -21,6 +21,7 @@ interface QueryExecutor
 {
     /**
      * Execute query.
+     * Returns \ServiceBus\Storage\Common\ResultSet
      *
      * @psalm-param array<string, string|int|float|null> $parameters
      *
@@ -28,8 +29,6 @@ interface QueryExecutor
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
-     *
-     * @return Promise<\ServiceBus\Storage\Common\ResultSet>
      */
     public function execute(string $queryString, array $parameters = []): Promise;
 }

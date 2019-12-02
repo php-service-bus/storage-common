@@ -22,10 +22,9 @@ interface ResultSet
     /**
      * Succeeds with true if an emitted value is available by calling getCurrent() or false if the iterator has
      * resolved. If the iterator fails, the returned promise will fail with the same exception.
+     * Returns bool
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
-     *
-     * @return Promise<bool>
      */
     public function advance(): Promise;
 
@@ -41,10 +40,9 @@ interface ResultSet
 
     /**
      * Receive last insert id.
+     * Returns int|string|null
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
-     *
-     * @return Promise<int|string|null>
      */
     public function lastInsertId(?string $sequence = null): Promise;
 

@@ -21,12 +21,11 @@ interface DatabaseAdapter extends QueryExecutor, BinaryDataDecoder
 {
     /**
      * Start transaction.
+     * Returns \ServiceBus\Storage\Common\Transaction
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
-     *
-     * @return Promise<\ServiceBus\Storage\Common\Transaction>
      */
     public function transaction(): Promise;
 
@@ -39,8 +38,6 @@ interface DatabaseAdapter extends QueryExecutor, BinaryDataDecoder
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
-     *
-     * @return Promise
      */
     public function transactional(callable $function): Promise;
 }

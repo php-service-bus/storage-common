@@ -34,12 +34,12 @@ final class StorageConfiguration
     /**
      * Database host.
      */
-    public ?string $host;
+    public ?string $host = null;
 
     /**
      * Database port.
      */
-    public ?int $port;
+    public ?int $port = null;
 
     /**
      * Database user.
@@ -49,12 +49,12 @@ final class StorageConfiguration
     /**
      * Database user password.
      */
-    public ?string $password;
+    public ?string $password = null;
 
     /**
      * Database name.
      */
-    public ?string $databaseName;
+    public ?string $databaseName = null;
 
     /**
      * Connection encoding.
@@ -92,7 +92,7 @@ final class StorageConfiguration
         $parsedDSN = \parse_url((string) $preparedDSN);
 
         // @codeCoverageIgnoreStart
-        if (false === \is_array($parsedDSN))
+        if (\is_array($parsedDSN) === false)
         {
             throw new InvalidConfigurationOptions('Error while parsing connection DSN');
         }
@@ -100,7 +100,7 @@ final class StorageConfiguration
 
         $queryString = 'charset=UTF-8';
 
-        if (true === isset($parsedDSN['query']) && '' !== $parsedDSN['query'])
+        if (isset($parsedDSN['query']) === true && '' !== $parsedDSN['query'])
         {
             $queryString = (string) $parsedDSN['query'];
         }
@@ -125,6 +125,6 @@ final class StorageConfiguration
      */
     public function hasCredentials(): bool
     {
-        return '' !== (string) $this->username || '' !== (string) $this->password;
+        return (string) $this->username !== '' || (string) $this->password !== '';
     }
 }
