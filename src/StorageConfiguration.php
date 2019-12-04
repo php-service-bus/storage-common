@@ -23,48 +23,66 @@ final class StorageConfiguration
 {
     /**
      * Original DSN.
+     *
+     * @var string
      */
-    public string $originalDSN;
+    public $originalDSN;
 
     /**
      * Scheme.
+     *
+     * @var string|null
      */
-    public ?string $scheme;
+    public $scheme;
 
     /**
      * Database host.
+     *
+     * @var string|null
      */
-    public ?string $host = null;
+    public $host = null;
 
     /**
      * Database port.
+     *
+     * @var int|null
      */
-    public ?int $port = null;
+    public $port = null;
 
     /**
      * Database user.
+     *
+     * @var string|null
      */
-    public ?string $username;
+    public $username;
 
     /**
      * Database user password.
+     *
+     * @var string|null
      */
-    public ?string $password = null;
+    public $password = null;
 
     /**
      * Database name.
+     *
+     * @var string|null
      */
-    public ?string $databaseName = null;
+    public $databaseName = null;
 
     /**
      * Connection encoding.
+     *
+     * @var string|null
      */
-    public string $encoding;
+    public $encoding;
 
     /**
      * All query parameters.
+     *
+     * @var array
      */
-    public array $queryParameters = [];
+    public $queryParameters = [];
 
     /**
      * @param string $connectionDSN DSN examples:

@@ -27,7 +27,7 @@
     }
   },
   "require": {
-    "php": ">=7.4"
+    "php": ">=7.3"
   },
   "require-dev": {
     "php-service-bus/code-style-config": "v1.2.*",
