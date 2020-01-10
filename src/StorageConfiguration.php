@@ -110,7 +110,7 @@ final class StorageConfiguration
         $parsedDSN = \parse_url((string) $preparedDSN);
 
         // @codeCoverageIgnoreStart
-        if(\is_array($parsedDSN) === false)
+        if (\is_array($parsedDSN) === false)
         {
             throw new InvalidConfigurationOptions('Error while parsing connection DSN');
         }
@@ -118,7 +118,7 @@ final class StorageConfiguration
 
         $queryString = 'charset=UTF-8';
 
-        if(isset($parsedDSN['query']) === true && '' !== $parsedDSN['query'])
+        if (isset($parsedDSN['query']) === true && '' !== $parsedDSN['query'])
         {
             $queryString = (string) $parsedDSN['query'];
         }
@@ -132,8 +132,8 @@ final class StorageConfiguration
         $this->scheme       = self::stringOrNull('scheme', $parsedDSN);
         $this->host         = self::stringOrNull('host', $parsedDSN, 'localhost');
         $this->port         = $parsedDSN['port'] ?? null;
-        $this->username     = self::stringOrNull('user', $parsedDSN);;
-        $this->password     = self::stringOrNull('pass', $parsedDSN);;
+        $this->username     = self::stringOrNull('user', $parsedDSN);
+        $this->password     = self::stringOrNull('pass', $parsedDSN);
         $this->databaseName = $parsedDSN['path'] ? \ltrim((string) $parsedDSN['path'], '/') : null;
         $this->encoding     = $queryParameters['charset'] ?? 'UTF-8';
     }
@@ -148,7 +148,7 @@ final class StorageConfiguration
 
     private static function stringOrNull(string $key, array $collection, $default = null): ?string
     {
-        if(\array_key_exists($key, $collection) === false)
+        if (\array_key_exists($key, $collection) === false)
         {
             return $default;
         }
@@ -156,7 +156,7 @@ final class StorageConfiguration
         /** @var string|null $value */
         $value = $collection[$key];
 
-        if($value === null || $value === '')
+        if ($value === null || $value === '')
         {
             return $default;
         }
