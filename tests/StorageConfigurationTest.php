@@ -20,11 +20,7 @@ use ServiceBus\Storage\Common\StorageConfiguration;
  */
 final class StorageConfigurationTest extends TestCase
 {
-    /**
-     * @test
-     *
-     * @throws \Throwable
-     */
+    /** @test */
     public function parseSqlite(): void
     {
         $configuration = new StorageConfiguration('sqlite:///:memory:');
@@ -34,26 +30,35 @@ final class StorageConfigurationTest extends TestCase
         static::assertSame('localhost', $configuration->host);
         static::assertSame(':memory:', $configuration->databaseName);
         static::assertSame('UTF-8', $configuration->encoding);
-        static::assertFalse($configuration->hasCredentials());
     }
 
-    /**
-     * @test
-     *
-     * @throws \Throwable
-     */
+    /** @test */
     public function parseFullDSN(): void
     {
         $configuration = new StorageConfiguration(
             'pgsql://someUser:someUserPassword@host:54332/databaseName?charset=UTF-16'
         );
+
         static::assertSame('pgsql', $configuration->scheme);
         static::assertSame('host', $configuration->host);
         static::assertSame(54332, $configuration->port);
         static::assertSame('databaseName', $configuration->databaseName);
         static::assertSame('UTF-16', $configuration->encoding);
-        static::assertTrue($configuration->hasCredentials());
         static::assertSame('someUser', $configuration->username);
         static::assertSame('someUserPassword', $configuration->password);
+    }
+
+    /** @test */
+    public function parseWithoutPassword(): void
+    {
+        $configuration = new StorageConfiguration('pgsql://username:@localhost:5432/databaseName');
+
+        static::assertSame('pgsql', $configuration->scheme);
+        static::assertSame('localhost', $configuration->host);
+        static::assertSame(5432, $configuration->port);
+        static::assertSame('databaseName', $configuration->databaseName);
+        static::assertSame('UTF-8', $configuration->encoding);
+        static::assertSame('username', $configuration->username);
+        static::assertNull($configuration->password);
     }
 }

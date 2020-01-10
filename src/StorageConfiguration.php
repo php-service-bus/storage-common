@@ -128,25 +128,26 @@ final class StorageConfiguration
         /** @var array{charset:string|null, max_connections:int|null, idle_timeout:int|null} $queryParameters */
         $queryParameters = $this->queryParameters;
 
-        $this->originalDSN  = $connectionDSN;
-        $this->scheme       = self::stringOrNull('scheme', $parsedDSN);
-        $this->host         = self::stringOrNull('host', $parsedDSN, 'localhost');
-        $this->port         = $parsedDSN['port'] ?? null;
-        $this->username     = self::stringOrNull('user', $parsedDSN);
-        $this->password     = self::stringOrNull('pass', $parsedDSN);
-        $this->databaseName = $parsedDSN['path'] ? \ltrim((string) $parsedDSN['path'], '/') : null;
-        $this->encoding     = $queryParameters['charset'] ?? 'UTF-8';
+        $this->originalDSN = $connectionDSN;
+        $this->scheme      = self::extract('scheme', $parsedDSN);
+        $this->host        = self::extract('host', $parsedDSN, 'localhost');
+        $this->port        = $parsedDSN['port'] ?? null;
+        $this->username    = self::extract('user', $parsedDSN);
+        $this->password    = self::extract('pass', $parsedDSN);
+        $this->encoding    = self::extract('charset', $queryParameters, 'UTF-8');
+
+        $databaseName = self::extract('path', $parsedDSN);
+
+        if ($databaseName !== null)
+        {
+            /** @psalm-suppress PossiblyInvalidArgument */
+            $databaseName = \ltrim($databaseName, '/');
+        }
+
+        $this->databaseName = $databaseName;
     }
 
-    /**
-     * Has specified credentials.
-     */
-    public function hasCredentials(): bool
-    {
-        return (string) $this->username !== '' || (string) $this->password !== '';
-    }
-
-    private static function stringOrNull(string $key, array $collection, $default = null): ?string
+    private static function extract(string $key, array $collection, ?string $default = null): ?string
     {
         if (\array_key_exists($key, $collection) === false)
         {
@@ -156,7 +157,7 @@ final class StorageConfiguration
         /** @var string|null $value */
         $value = $collection[$key];
 
-        if ($value === null || $value === '')
+        if (empty($value) === true)
         {
             return $default;
         }
