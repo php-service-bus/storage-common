@@ -129,9 +129,9 @@ final class StorageConfiguration
         $queryParameters = $this->queryParameters;
 
         $this->originalDSN = $connectionDSN;
+        $this->port        = $parsedDSN['port'] ?? null;
         $this->scheme      = self::extract('scheme', $parsedDSN);
         $this->host        = self::extract('host', $parsedDSN, 'localhost');
-        $this->port        = $parsedDSN['port'] ?? null;
         $this->username    = self::extract('user', $parsedDSN);
         $this->password    = self::extract('pass', $parsedDSN);
         $this->encoding    = self::extract('charset', $queryParameters, 'UTF-8');
