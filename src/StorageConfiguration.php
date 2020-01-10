@@ -110,7 +110,7 @@ final class StorageConfiguration
         $parsedDSN = \parse_url((string) $preparedDSN);
 
         // @codeCoverageIgnoreStart
-        if (\is_array($parsedDSN) === false)
+        if(\is_array($parsedDSN) === false)
         {
             throw new InvalidConfigurationOptions('Error while parsing connection DSN');
         }
@@ -118,7 +118,7 @@ final class StorageConfiguration
 
         $queryString = 'charset=UTF-8';
 
-        if (isset($parsedDSN['query']) === true && '' !== $parsedDSN['query'])
+        if(isset($parsedDSN['query']) === true && '' !== $parsedDSN['query'])
         {
             $queryString = (string) $parsedDSN['query'];
         }
@@ -129,11 +129,11 @@ final class StorageConfiguration
         $queryParameters = $this->queryParameters;
 
         $this->originalDSN  = $connectionDSN;
-        $this->scheme       = $parsedDSN['scheme'] ?? null;
-        $this->host         = $parsedDSN['host'] ?? null;
+        $this->scheme       = self::stringOrNull('scheme', $parsedDSN);
+        $this->host         = self::stringOrNull('host', $parsedDSN, 'localhost');
         $this->port         = $parsedDSN['port'] ?? null;
-        $this->username     = $parsedDSN['user'] ?? null;
-        $this->password     = $parsedDSN['pass'] ?? null;
+        $this->username     = self::stringOrNull('user', $parsedDSN);;
+        $this->password     = self::stringOrNull('pass', $parsedDSN);;
         $this->databaseName = $parsedDSN['path'] ? \ltrim((string) $parsedDSN['path'], '/') : null;
         $this->encoding     = $queryParameters['charset'] ?? 'UTF-8';
     }
@@ -144,5 +144,23 @@ final class StorageConfiguration
     public function hasCredentials(): bool
     {
         return (string) $this->username !== '' || (string) $this->password !== '';
+    }
+
+    private static function stringOrNull(string $key, array $collection, $default = null): ?string
+    {
+        if(\array_key_exists($key, $collection) == false)
+        {
+            return $default;
+        }
+
+        /** @var string|null $value */
+        $value = $collection[$key];
+
+        if($value === null || $value === '')
+        {
+            return $default;
+        }
+
+        return $value;
     }
 }
