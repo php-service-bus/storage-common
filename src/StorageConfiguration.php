@@ -148,7 +148,7 @@ final class StorageConfiguration
 
     private static function stringOrNull(string $key, array $collection, $default = null): ?string
     {
-        if(\array_key_exists($key, $collection) == false)
+        if(\array_key_exists($key, $collection) === false)
         {
             return $default;
         }
