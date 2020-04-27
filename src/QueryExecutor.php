@@ -21,9 +21,10 @@ interface QueryExecutor
 {
     /**
      * Execute query.
-     * Returns \ServiceBus\Storage\Common\ResultSet
      *
      * @psalm-param array<string, string|int|float|null> $parameters
+     *
+     * @return Promise<\ServiceBus\Storage\Common\ResultSet>
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\InvalidConfigurationOptions
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed

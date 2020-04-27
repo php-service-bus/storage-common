@@ -27,13 +27,13 @@
     }
   },
   "require": {
-    "php": ">=7.3"
+    "php": ">=7.4"
   },
   "require-dev": {
     "php-service-bus/code-style-config": "v1.2.*",
-    "phpunit/phpunit": "v8.4.*",
-    "vimeo/psalm": "v3.7.*",
-    "phpstan/phpstan": "v0.11.*",
+    "phpunit/phpunit": "v9.1.*",
+    "vimeo/psalm": "v3.11.*",
+    "phpstan/phpstan": "v0.12.*",
     "amphp/amp": "v2.4.*"
   },
   "prefer-stable": true,

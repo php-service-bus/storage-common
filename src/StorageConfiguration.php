@@ -118,7 +118,7 @@ final class StorageConfiguration
 
         $queryString = 'charset=UTF-8';
 
-        if (isset($parsedDSN['query']) === true && '' !== $parsedDSN['query'])
+        if (!empty($parsedDSN['query']))
         {
             $queryString = (string) $parsedDSN['query'];
         }

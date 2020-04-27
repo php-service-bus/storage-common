@@ -22,6 +22,8 @@ interface Transaction extends QueryExecutor, BinaryDataDecoder
     /**
      * Commit transaction.
      *
+     * @return Promise<null>
+     *
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\UniqueConstraintViolationCheckFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed
@@ -30,6 +32,8 @@ interface Transaction extends QueryExecutor, BinaryDataDecoder
 
     /**
      * Rollback transaction.
+     *
+     * @return Promise<null>
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ConnectionFailed
      * @throws \ServiceBus\Storage\Common\Exceptions\StorageInteractingFailed

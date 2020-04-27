@@ -22,7 +22,8 @@ interface ResultSet
     /**
      * Succeeds with true if an emitted value is available by calling getCurrent() or false if the iterator has
      * resolved. If the iterator fails, the returned promise will fail with the same exception.
-     * Returns bool
+     *
+     * @return Promise<bool>
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      */
@@ -40,7 +41,8 @@ interface ResultSet
 
     /**
      * Receive last insert id.
-     * Returns int|string|null
+     *
+     * @return Promise<int|string|null>
      *
      * @throws \ServiceBus\Storage\Common\Exceptions\ResultSetIterationFailed
      */
